@@ -1,100 +1,30 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
+import "./css/faq.css";
 
-import { getImagesByQuery } from './js/pixabay-api';
-import {
-  clearGallery,
-  createGallery,
-  showLoader,
-  hideLoader,
-  showLoadMoreButton,
-  hideLoadMoreButton,
-} from './js/render-functions';
 
-const form = document.querySelector('.form');
-const loadMoreBtn = document.querySelector('.load-more');
-
-let currentQuery = '';
-let currentPage = 1;
-let totalHits = 0;
-
-form.addEventListener('submit', async event => {
-  event.preventDefault();
-  const query = form.elements['search-text'].value.trim();
-
-  if (!query) {
-    iziToast.info({
-      message: 'Please enter a search term.',
-      position: 'topRight',
-    });
-    return;
-  }
-
-  currentQuery = query;
-  currentPage = 1;
-  clearGallery();
-  hideLoadMoreButton();
-  showLoader();
-
-  try {
-    const data = await getImagesByQuery(currentQuery, currentPage);
-    totalHits = data.totalHits;
-
-    if (!data.hits.length) {
-      iziToast.warning({
-        message: 'Sorry, there are no images matching your search query.',
-        position: 'topRight',
-      });
-      return;
-    }
-
-    createGallery(data.hits);
-    if (data.hits.length < 15 || totalHits <= 15) {
-      hideLoadMoreButton();
-    } else {
-      showLoadMoreButton();
-    }
-  } catch (error) {
-    iziToast.error({
-      message: 'Something went wrong. Please try again later.',
-      position: 'topRight',
-    });
-  } finally {
-    hideLoader();
-  }
+// 1. Ініціалізація з анімацією
+const acc = new Accordion(".accordion-container", {
+  duration: 500,
+  showMultiple: false,
 });
 
-loadMoreBtn.addEventListener('click', async () => {
-  currentPage++;
-  showLoader();
+// 2. Закривати вручну з анімацією
+document.addEventListener("click", (e) => {
+  const accordionContainer = document.querySelector(".accordion-container");
 
-  try {
-    const data = await getImagesByQuery(currentQuery, currentPage);
-    createGallery(data.hits);
+  if (!accordionContainer.contains(e.target)) {
+    // Знайти всі активні елементи
+    const activeItems = document.querySelectorAll(".accordion-container .ac.is-active");
 
-    const totalShown = document.querySelectorAll('.gallery-item').length;
-    if (totalShown >= totalHits) {
-      hideLoadMoreButton();
-      iziToast.info({
-        message: "We're sorry, but you've reached the end of search results.",
-        position: 'topRight',
-      });
-    }
-    
-    const { height: cardHeight } = document
-      .querySelector('.gallery-item')
-      .getBoundingClientRect();
+    activeItems.forEach((item, index) => {
+      // Знаходимо індекс кожного активного елемента
+      const allItems = Array.from(document.querySelectorAll(".accordion-container .ac"));
+      const itemIndex = allItems.indexOf(item);
 
-    window.scrollBy({
-      top: cardHeight * 2,
-      behavior: 'smooth',
+      if (itemIndex !== -1) {
+        acc.close(itemIndex); // закриваємо з анімацією
+      }
     });
-  } catch (error) {
-    iziToast.error({
-      message: 'Failed to load more images.',
-      position: 'topRight',
-    });
-  } finally {
-    hideLoader();
   }
 });

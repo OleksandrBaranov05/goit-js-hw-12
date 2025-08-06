@@ -1,20 +1,39 @@
-import axios from 'axios';
+// import Accordion from "accordion-js";
+// import "accordion-js/dist/accordion.min.css";
+// import "./css/faq.css";
 
-const BASE_URL = 'https://pixabay.com/api/';
-const API_KEY = '51538469-8b3be560c440e4726340ee2f6';
-const PER_PAGE = 15;
+// new Accordion(".accordion-container", {
+//   duration: 300,
+//   showMultiple: false,
+// });
+// ----------------------------------------------
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
+import "./css/faq.css";
 
-export async function getImagesByQuery(query, page) {
-  const params = {
-    key: API_KEY,
-    q: query,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-    page,
-    per_page: PER_PAGE,
-  };
 
-  const response = await axios.get(BASE_URL, { params });
-  return response.data;
-}
+// 1. Ініціалізація з анімацією
+const acc = new Accordion(".accordion-container", {
+  duration: 500,
+  showMultiple: false,
+});
+
+// 2. Закривати вручну з анімацією
+document.addEventListener("click", (e) => {
+  const accordionContainer = document.querySelector(".accordion-container");
+
+  if (!accordionContainer.contains(e.target)) {
+    // Знайти всі активні елементи
+    const activeItems = document.querySelectorAll(".accordion-container .ac.is-active");
+
+    activeItems.forEach((item, index) => {
+      // Знаходимо індекс кожного активного елемента
+      const allItems = Array.from(document.querySelectorAll(".accordion-container .ac"));
+      const itemIndex = allItems.indexOf(item);
+
+      if (itemIndex !== -1) {
+        acc.close(itemIndex); // закриваємо з анімацією
+      }
+    });
+  }
+});
