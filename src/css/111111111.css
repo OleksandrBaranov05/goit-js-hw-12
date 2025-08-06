@@ -184,3 +184,217 @@ border-top: 1px solid rgba(0, 0, 0, 0.15);
 .ac-text {
   margin: 0;
 }
+/* ----------------------------- */
+/* FAQ Section */
+.faq {
+  padding: 80px 20px;
+  background-color: #f9f9f9;
+}
+
+.faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.faq__title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Accordion item */
+.ac {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  transition: border-color 0.3s ease;
+}
+
+.ac:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ac.is-active {
+
+  border-top: 1px solid #6B0609;
+  border-bottom: 1px solid #6B0609;
+}
+
+/* Header */
+.ac-header {
+  margin: 0;
+}
+
+/* Trigger (button) */
+.ac .ac-trigger {
+  position: relative;
+  padding: 20px 30px 20px 0;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Видаляємо стандартний + / - із бібліотеки */
+.ac .ac-header > .ac-trigger::after {
+  content: "" !important;
+}
+
+/* SVG стрілка вниз (за замовчуванням) */
+.ac-trigger::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+/* Коли відкрито — стрілка вгору */
+.ac.is-active .ac-trigger::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Активне питання (фокус або відкрито) */
+.ac .ac-trigger:focus,
+.ac.is-active .ac-trigger {
+  color: #080C09;
+}
+
+/* Вміст акордеона */
+.ac-panel {
+  font-size: 16px;
+  color: #555;
+}
+
+.ac-text {
+  margin: 0;
+}
+/* ---------------------------------------------------------// */
+/* FAQ Section */
+.faq {
+  padding: 80px 20px; /* Відступи зверху/знизу і з боків */
+  background-color: #f9f9f9; /* Світлий фон для секції */
+}
+
+.faq__container {
+  max-width: 800px; /* Максимальна ширина контейнера */
+  margin: 0 auto; /* Вирівнювання по центру */
+  background: #fff; /* Білий фон контейнера */
+  padding: 40px; /* Внутрішні відступи */
+  border-radius: 8px; /* Заокруглені кути */
+}
+
+.faq__title {
+  margin-bottom: 32px; /* Відступ знизу */
+  font-family: "Raleway", sans-serif;
+font-weight: 700;
+font-size: 48px;
+line-height: 1.2;
+letter-spacing: 0.01em;
+text-align: center;
+color: #080c09;
+}
+
+/* Accordion item */
+.ac {
+  border: none; /* Прибираємо всі стандартні бордери */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15); /* Лінія між елементами */
+  background-color: #fff; /* Білий фон для кожного елемента */
+  margin: 0;
+  padding: 0;
+  transition: border-color 0.3s ease; /* Анімація зміни кольору бордерів */
+}
+
+.ac:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.15); /* Верхній бордер для першого елемента */
+}
+
+.ac.is-active {
+  /* При відкритті питання бордери зверху і знизу стають темно-червоними */
+  border-top: 1px solid #6B0609;
+  border-bottom: 1px solid #6B0609;
+}
+
+/* Header */
+.ac-header {
+  margin: 0; /* Прибираємо стандартні відступи */
+}
+
+/* Trigger (button) */
+.ac .ac-trigger {
+  position: relative; /* Щоб можна було розмістити стрілку всередині */
+  padding: 20px 30px 20px 0; /* Відступ справа для стрілки */
+  background: none; /* Без фону */
+  border: none; /* Без рамок */
+  width: 100%; /* На всю ширину контейнера */
+  text-align: left; /* Текст вирівняно вліво */
+  font-size: 18px; /* Розмір тексту питання */
+  font-weight: 700; /* Товщина шрифту */
+  cursor: pointer; /* Курсор у вигляді руки */
+  transition: color 0.3s ease; /* Анімація зміни кольору */
+  font-family: "Raleway", sans-serif;
+font-weight: 700;
+line-height: 1.6;
+color: #080c09;
+}
+
+/* Видаляємо стандартний + / - із бібліотеки */
+.ac .ac-header > .ac-trigger::after {
+  content: "" !important;
+}
+
+/* SVG стрілка вниз (за замовчуванням) */
+.ac-trigger::after {
+  content: "";
+  position: absolute; /* Розташування поверх кнопки */
+  top: 50%; /* По центру вертикально */
+  right: 0; /* Притискаємо до правого краю */
+  width: 16px;
+  height: 16px;
+  /* SVG-іконка стрілки вниз у форматі data:image */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; /* Без повторення картинки */
+  background-position: center; /* По центру контейнера */
+  background-size: 100%; /* Заповнення всього контейнера */
+  transform: translateY(-50%) rotate(0deg); /* Центрування + без повороту */
+  transition: transform 0.3s ease, background-image 0.3s ease; /* Плавна анімація */
+}
+
+/* Коли відкрито — стрілка вгору */
+.ac.is-active .ac-trigger::after {
+  transform: translateY(-50%) rotate(180deg); /* Поворот на 180 градусів */
+}
+
+/* Активне питання (фокус або відкрито) */
+.ac .ac-trigger:focus,
+.ac.is-active .ac-trigger {
+  color: #080C09; /* Зміна кольору тексту */
+}
+
+/* Вміст акордеона */
+.ac-panel {
+  font-weight: 400;
+  font-size: 16px; /* Розмір тексту відповіді */
+  color: #080c09; /* Колір тексту відповіді */
+  
+}
+.ac .ac-panel .ac-text {
+   padding: 0px 0px 24px 0px;
+}
