@@ -1,0 +1,11 @@
+import{A as s}from"./vendor-Cb7VvBBu.js";(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const o of t.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&c(o)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function c(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}})();const a=[{question:"Як здійснюється доставка меблів?",answer:"Ми доставляємо замовлення по всій Україні через кур'єрські служби. Термін доставки зазвичай складає 2–7 днів з моменту обробки."},{question:"Чи є можливість вибрати колір або матеріал?",answer:"Так, у більшості товарів доступні варіанти вибору кольорів. Усі доступні опції вказані в описі товару."},{question:"Чи можна повернути товар, якщо він не підійшов?",answer:"Так, ви можете повернути товар протягом 14 днів. Зв'яжіться з нашою службою підтримки для отримання інструкцій."},{question:"Чи надаєте ви послугу збирання меблів?",answer:"Так, ми пропонуємо замовлення послуги збирання меблів. Наші майстри зберуть меблі у зручний для вас час."},{question:"Як здійснити оплату?",answer:"Ми приймаємо оплату карткою онлайн. Безпечність переказів 100% гарантується при отриманні."}],l=document.getElementById("faq-list");a.forEach(r=>{l.innerHTML+=`
+    <article class="ac">
+      <h3 class="ac-header">
+        <button type="button" class="ac-trigger">${r.question}</button>
+      </h3>
+      <div class="ac-panel">
+        <p class="ac-text">${r.answer}</p>
+      </div>
+    </article>
+  `});const u=new s(".accordion-container",{duration:500,showMultiple:!1});document.addEventListener("click",r=>{document.querySelector(".accordion-container").contains(r.target)||document.querySelectorAll(".accordion-container .ac.is-active").forEach((c,e)=>{const o=Array.from(document.querySelectorAll(".accordion-container .ac")).indexOf(c);o!==-1&&u.close(o)})});
+//# sourceMappingURL=main-CZrTjDrP.js.map
